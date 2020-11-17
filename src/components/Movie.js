@@ -1,8 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image, Pressable} from 'react-native'
+import { View, StyleSheet, Image, Pressable} from 'react-native';
 import {DateTime} from 'luxon';
 
 import constants from '../utils/constants';
+
+import { FontAwesome } from '@expo/vector-icons';
+import Text from '../components/TextCustom';
 
 const Luxon = DateTime.local().setLocale('es');
 
@@ -28,14 +31,22 @@ const Movie = ({ movie , navigation}) => {
                 style={styles.poster}
                 source={{uri:`https://image.tmdb.org/t/p/original/${poster_path}`}} />
             <View style={{flex: 1, marginLeft: imageMargin}}>
-                <View style={styles.titleContainer}>
-                    <Text numberOfLines={2} style={styles.title}>{title}</Text>
-                    <Text style={styles.votes}>{vote_average}</Text>
-                </View>
-                <Text style={styles.popularity}>{popularity.toFixed(0)}</Text>
-                <Text style={styles.release}>
-                    {DateTime.fromISO(release_date).setLocale('es').toFormat('MMM, y')}
-                </Text>
+            <View style={styles.titleContainer}>
+					<Text fontFamily="bold" numberOfLines={1} style={styles.title}>
+						{title}
+					</Text>
+                    <FontAwesome 
+                        key={position} 
+                        name={iconName} 
+                        size={16} 
+                        color={constants.COLORS.WARNING}
+                    />
+					<Text fontFamily="bold" style={styles.votes}>
+						{vote_average}
+					</Text>
+				</View>
+				<Text style={styles.popularity}>{popularity.toFixed(0)}</Text>
+				<Text style={styles.release_date}>{date}</Text>
             </View>
         </Pressable>
     )

@@ -3,12 +3,12 @@
         "name": "Movies",
         "slug": "movies",
         "version": "1.0.0",
-        "platform": [
+        "platforms": [
             "android",
             "ios"
         ],
         "ios": {
-            "bundleIdentifier": "cr.ac.ucer.movies",
+            "bundleIdentifier": "cr.ac.ucr.movies",
             "buildNumber": "1.0.0"
         },
         "android": {
@@ -16,6 +16,6 @@
             "versionCode": 1
         },
         "description": "",
-        "githubUrl":""
+        "githubUrl":"https://github.com/Makkpas/navigation-class"
     }
 }

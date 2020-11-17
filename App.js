@@ -3,9 +3,17 @@ import React from 'react';
 
 import Router from './Router';
 
+import LoadAssets from './src/utils/loadAssets';
+
+import { fonts } from './src/utils/fonts'
+
+const assets = [];
+
 const App = () => {
   return (
-    <Router></Router>
+    <LoadAssets {...{fonts:fonts, assets:assets}}>
+      <Router></Router>
+    </LoadAssets>
   );
 }
 

@@ -81,6 +81,7 @@ export const DetailsScreen = ({ navigation, route }) => {
 			</View>
 			<View style={styles.content}>
 				<Image
+					//TODO: arreglar la imagen, se está cortando
 					resizeMode="cover"
 					style={styles.poster}
 					source={{
