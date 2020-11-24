@@ -39,14 +39,14 @@ const Movie = ({ movie , navigation}) => {
 					<Text fontFamily="bold" numberOfLines={1} style={styles.title}>
 						{title}
 					</Text>
+					<Text fontFamily="bold" style={styles.votes}>
+						{vote_average}
+					</Text>
                     <FontAwesome 
                         name={iconName} 
                         size={18} 
                         color={constants.COLORS.WARNING}
                     />
-					<Text fontFamily="bold" style={styles.votes}>
-						{vote_average}
-					</Text>
 				</View>
 				<Text style={styles.popularity}>{popularity.toFixed(0)}</Text>
 				<Text style={styles.release_date}>{date}</Text>
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     votes: {
         color: constants.COLORS.WARNING,
         fontWeight: "bold",
+        marginRight:5,
     },
     popularity: {
         color: constants.COLORS.PRIMARY,

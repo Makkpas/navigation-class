@@ -7,12 +7,23 @@ import axios from '../utils/axios';
 
 import constants from '../utils/constants';
 
-import Movie from '../components/Movie'
+import Movies from '../components/Movies'
 import { fontsName } from '../utils/fonts';
+
+const ActiveIndicator = () => {
+	return (
+		<View style={styles.indicatorContainer}>
+			<View style={[styles.indicator]}></View>
+			<View style={[styles.indicator, styles.indicatorMin]}></View>
+		</View>
+	);
+};
+
 
 export const HomeScreen = ({navigation}) => {
 
     const [movies, setMovies] = React.useState([]);
+    
     const [activeTab, setActiveTab] = React.useState('popular');
 
     useEffect(() => {
@@ -27,10 +38,11 @@ export const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.titleContainer}>
-                <Text style={styles.title}>Movies</Text>
-                <Feather name="search" size={18} color="black" />
-            </View>
-            <ScrollView style={styles.tabstop} horizontal={true}>
+				<Text style={styles.title}>MOVIES</Text>
+				<Feather name="search" size={18} color="black" />
+			</View>
+
+			<ScrollView style={styles.tabstop} horizontal={true}>
 				<Pressable style={styles.tab} onPress={() => setActiveTab('popular')}>
 					<Text
 						style={[
@@ -45,7 +57,7 @@ export const HomeScreen = ({navigation}) => {
 					>
 						Now Popular
 					</Text>
-					{/* {activeTab === 'popular' && <ActiveIndicator />} */}
+					{activeTab === 'popular' && <ActiveIndicator />}
 				</Pressable>
 				<Pressable style={styles.tab} onPress={() => setActiveTab('upcoming')}>
 					<Text
@@ -61,16 +73,12 @@ export const HomeScreen = ({navigation}) => {
 					>
 						The Upcoming
 					</Text>
-					{/* {activeTab === 'upcoming' && <ActiveIndicator />} */}
+					{activeTab === 'upcoming' && <ActiveIndicator />}
 				</Pressable>
 			</ScrollView>
-            <FlatList
-            style={styles.list}
-                data={movies}
-                renderItem={({ item }) => <Movie {...{ movie: item , navigation: navigation}} />}
-                keyExtractor = {(item) =>`${item.id}`}
-            
-            />
+
+			{activeTab === 'popular' && <Movies type="popular" {...{ navigation }} />}
+			{activeTab === 'upcoming' && <Movies type="upcoming" {...{ navigation }} />}
         </View>
     )
 };
@@ -107,5 +115,21 @@ const styles = StyleSheet.create({
 	tabText: {
 		fontSize: 14,
 		fontFamily: fontsName.BOLD,
+    },
+    indicatorContainer: {
+		flexDirection: 'row',
+		marginVertical: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	indicator: {
+		height: 3,
+		width: 20,
+		borderRadius: 10,
+		backgroundColor: constants.COLORS.WARNING,
+	},
+	indicatorMin: {
+		width: 5,
+		marginLeft: 5,
 	},
 });
