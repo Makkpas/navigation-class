@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text, StyleSheet, Image, Pressable, ScrollView, Dimensions, Platform } from 'react-native';
-import { AntDesign , Ionicons } from '@expo/vector-icons';
+import {  Ionicons } from '@expo/vector-icons';
 
 
 import constants from '../utils/constants';
 
 const { width } = Dimensions.get('window')
 
-export const CastAndCrew = ({ navigation, route }) => {
+export const CastAndCrewScreen = ({ navigation, route }) => {
 
 	const { cast, crew } = route.params;
 

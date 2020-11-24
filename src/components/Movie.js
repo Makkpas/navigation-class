@@ -15,11 +15,15 @@ const imageMargin = imageWidth  + 24;
 const imageHeight = 133;
 const cardTop = imageHeight  / 2 - 10;
 
+let iconName = 'star';
+
 
 
 const Movie = ({ movie , navigation}) => {
 
     const { title, vote_average, poster_path, popularity, release_date } = movie;
+
+    const date = DateTime.fromISO(release_date).setLocale('es').toFormat('MMM, y');
 
     const loadMovie = () => {
         navigation.navigate(constants.SCREEN.DETAILS, {movie});
@@ -36,9 +40,8 @@ const Movie = ({ movie , navigation}) => {
 						{title}
 					</Text>
                     <FontAwesome 
-                        key={position} 
                         name={iconName} 
-                        size={16} 
+                        size={18} 
                         color={constants.COLORS.WARNING}
                     />
 					<Text fontFamily="bold" style={styles.votes}>

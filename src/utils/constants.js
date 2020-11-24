@@ -1,5 +1,7 @@
 module.exports = {
 	SCREEN: {
+		MAIN: 'Main',
+		PROFILE: 'Profile',
 		HOME: 'Home',
 		DETAILS: 'Details',
 		CASTANDCREW: 'CastAndCrew',

@@ -81,7 +81,6 @@ export const DetailsScreen = ({ navigation, route }) => {
 			</View>
 			<View style={styles.content}>
 				<Image
-					//TODO: arreglar la imagen, se está cortando
 					resizeMode="cover"
 					style={styles.poster}
 					source={{
@@ -141,7 +140,7 @@ const styles = StyleSheet.create({
 		position: 'relative',
 		width,
 		padding: 25,
-		
+		marginBottom:25,
 		backgroundColor: constants.COLORS.LIGHT,
 		borderTopLeftRadius: 25,
 		borderTopRightRadius: 25,
